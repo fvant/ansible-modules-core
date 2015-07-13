@@ -50,8 +50,9 @@ options:
     default: cache.m1.small
   num_nodes:
     description:
-      - The initial number of cache nodes that the cache cluster will have
+      - The initial number of cache nodes that the cache cluster will have. In case of redis this is always 1
     required: false
+    default: 1
   cache_port:
     description:
       - The port number on which each of the cache nodes will accept connections
@@ -479,7 +480,7 @@ def main():
             engine={'required': False, 'default': 'memcached'},
             cache_engine_version={'required': False},
             node_type={'required': False, 'default': 'cache.m1.small'},
-            num_nodes={'required': False, 'default': None, 'type': 'int'},
+            num_nodes={'required': False, 'default': 1, 'type': 'int'},
             cache_port={'required': False, 'type': 'int'},
             cache_subnet_group={'required': False, 'default': None},
             cache_security_groups={'required': False, 'default': [default],
