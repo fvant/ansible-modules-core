@@ -184,8 +184,11 @@ def create_metric_alarm(connection, module):
         comparisons = {'<=' : 'LessThanOrEqualToThreshold', '<' : 'LessThanThreshold', '>=' : 'GreaterThanOrEqualToThreshold', '>' : 'GreaterThanThreshold'}
         alarm.comparison = comparisons[comparison]
 
-        dim1 = module.params.get('dimensions', {})
+        dim1 = module.params.get('dimensions')
         dim2 = alarm.dimensions
+        
+        if not dim1:
+         dim1 = {}
 
         for keys in dim1:
             if not isinstance(dim1[keys], list):
