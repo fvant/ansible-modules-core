@@ -31,7 +31,7 @@ options:
     required: true
   name:
     description:
-      - The cache cluster identifier
+      - The cache cluster identifier. Maximum length is 20 characters.
     required: true
   engine:
     description:
