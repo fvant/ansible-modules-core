@@ -391,6 +391,7 @@ def create_autoscaling_group(connection, module):
     wait_for_instances = module.params.get('wait_for_instances')
     as_groups = connection.get_all_groups(names=[group_name])
     wait_timeout = module.params.get('wait_timeout')
+    termination_policies = module.params.get('termination_policies')
 
     if not vpc_zone_identifier and not availability_zones:
         region, ec2_url, aws_connect_params = get_aws_connection_info(module)
@@ -792,7 +793,7 @@ def main():
             health_check_type=dict(default='EC2', choices=['EC2', 'ELB']),
             default_cooldown=dict(type='int', default=300),
             wait_for_instances=dict(type='bool', default=True),
-            termination_policies=dict(type='list', default=None)
+            termination_policies=dict(type='list', default='Default')
         ),
     )
     
