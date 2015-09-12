@@ -50,7 +50,7 @@ options:
     default: cache.m1.small
   num_nodes:
     description:
-      - The initial number of cache nodes that the cache cluster will have. In case of redis this is always 1
+      - The initial number of cache nodes that the cache cluster will have.
     required: false
     default: 1
   cache_port:
